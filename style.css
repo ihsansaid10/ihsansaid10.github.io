@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-image: url('crowd.gif');
+    background-image: url('muli.gif');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -17,10 +17,34 @@ h1 {
 
 p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
+    color: rgb(255, 255, 255);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-a input {
-    transition: all 0.3s ease;
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.popup-content {
+  background: #fff;
+  width: 300px;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.message-box {
+  width: 100%;
+  height: 120px;
+  resize: none; /* opsional: biar gak bisa di-drag */
 }
