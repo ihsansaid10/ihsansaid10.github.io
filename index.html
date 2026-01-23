@@ -9,24 +9,56 @@
      <p>Lahir di Jakarta, 21 Mei 2010</p>
      <p>pelajar yang nyasar di YAPIDH, Bekasi</p>
      <p>born to love technology, not biology</p>
-     <p>beginner HTML writer</p>
-     <p>I also like football; Ronaldo, and...... Messi?</p>
-     <p>الوقت أثمن من الذهب، والذهب أرخص من الوقت</p>
-     <a href='https://www.instagram.com/hsn_said2410/' target='_blank'>
-<input type='button' style='padding-left:10px;padding-top:10px;padding-right:10px;padding-bottom:10px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;background-color:#ff0059;color:#FFFFFF;border-left-width:1px;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-color:#d5d5d5;border-radius:5px;cursor:pointer' value='My Instagram' onMouseOver=this.style.backgroundColor='#FFFFFF';this.style.color='#000000';this.style.borderColor='#d5d5d5' onMouseOut=this.style.backgroundColor='#ff0059';this.style.color='#FFFFFF';this.style.borderColor='#d5d5d5' />
+     <p>Manchester is Red, 'cuz blue is just for film, GGMU</p>
+<button onclick="openPopup()">send me a private message</button>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+
+    <h3>private message</h3>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="ur name" required><br><br>
+      <input type="email" name="email" placeholder="ur email" required><br><br>
+      <textarea  class="message-box" name="message" placeholder="give me some of your advice, motivation, even your random life stories, give me anything, I'm open, also @mention your Instagram" required></textarea><br><br>
+      <button type="submit">send it!</button>
+    </form>
+
+    <p id="status"></p>
+  </div>
+</div>
 </a>
      <br>
-     <p>Favorite song:</p>
-     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4iJyoBOLtHqaGxP12qzhQI?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
-     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/630DpnzdfjdVqv2yLfPbAX?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6AI3ezQ4o3HUoP6Dhudph3?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </br>
-    <br>
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-8f30c3eb-23ee-4abb-b16a-a7a7f6d3bba6" data-elfsight-app-lazy></div>
+     <p>here some of my favorite playlist, random taste in music btw</p>
+     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1ZqrfEZAtN06bwh0JfZmHF?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </br>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("yt_2tMSGDfmCDqOxi");
+})();
+
+function openPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    "service_ryt27zf",
+    "template_7g723co",
+    this
+  ).then(function() {
+    document.getElementById("status").innerText = "Pesan berhasil dikirim!";
+  }, function(error) {
+    document.getElementById("status").innerText = "Gagal mengirim pesan";
+  });
+});</script>
 </html>
-
-
-
