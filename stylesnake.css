@@ -1,0 +1,145 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #000;
+  color: #00ffcc;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(#00ffaa22 1px, transparent 1px),
+    linear-gradient(90deg, #00ffaa22 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: movebg 10s linear infinite;
+  z-index: -1;
+}
+
+@keyframes movebg {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 200px 200px, 200px 200px; }
+}
+
+.hidden { display: none; }
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.intro-text {
+  font-size: 48px;
+  text-align: center;
+  color: #00ffee;
+  opacity: 0;
+  text-shadow: 0 0 25px #00ffee, 0 0 60px #00ffaa;
+  transition: opacity 1.5s ease;
+}
+
+.hud {
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ffaa;
+}
+
+.game-container {
+  display: flex;
+  gap: 20px;
+}
+
+canvas {
+  background: #000;
+  border: 3px solid #00ffaa;
+  box-shadow: 0 0 40px #00ffaa;
+}
+
+.side-panel {
+  width: 230px;
+  background: rgba(0, 255, 200, 0.05);
+  border: 2px solid #00ffaa;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 20px #00ffaa;
+}
+
+.side-panel button {
+  width: 100%;
+  margin: 4px 0;
+  padding: 6px;
+  background: #001a1a;
+  color: #00ffee;
+  border: 1px solid #00ffaa;
+  cursor: pointer;
+}
+
+.side-panel button:hover {
+  background: #00ffaa;
+  color: #000;
+  box-shadow: 0 0 12px #00ffaa;
+}
+
+.section {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.controls {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  gap: 5px;
+}
+
+.controls button {
+  width: 50px;
+  height: 50px;
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.rgb-on {
+  background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta);
+  color: black !important;
+  font-weight: bold;
+  box-shadow: 0 0 15px #fff;
+}
+
+#emojiPopup {
+  position: fixed;
+  bottom: 20px;
+  background: #000;
+  border: 2px solid #00ffaa;
+  padding: 10px;
+  max-width: 320px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 0 15px #00ffaa;
+  z-index: 999;
+}
+
+#emojiPopup span {
+  font-size: 26px;
+  margin: 5px;
+  cursor: pointer;
+  display: inline-block;
+}

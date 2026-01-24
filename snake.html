@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Nokia Snake : Reimagined</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="stylesnake.css">
+</head>
+<body>
+
+<div id="intro" class="intro-screen">
+  <div id="introText" class="intro-text"></div>
+</div>
+
+<div id="gameUI" class="hidden">
+
+  <div class="hud">
+    Score: <span id="score">0</span> |
+    Level: <span id="level">1</span> |
+    High Score: <span id="highScore">0</span>
+  </div>
+
+  <div class="game-container" id="gameContainer">
+
+    <canvas id="game" width="560" height="560"></canvas>
+
+    <div class="side-panel">
+
+      <button onclick="startGame()">▶ PLAY</button>
+      <button onclick="togglePause()">⏸ PAUSE</button>
+      <button onclick="toggleFullscreen()">⛶ FULLSCREEN</button>
+
+      <div class="section">
+        ⚡ SPEED
+        <button onclick="setSpeed(220)">SLOW</button>
+        <button onclick="setSpeed(150)">NORMAL</button>
+        <button onclick="setSpeed(90)">FAST</button>
+      </div>
+
+      <div class="section">
+        Body Color
+        <input type="color" id="bodyColor" value="#00ff99">
+        <button id="rgbBtn" onclick="toggleRGB()">🌈 RGB MODE</button>
+      </div>
+
+      <div class="section">
+        <button onclick="openEmoji('head')">😀 HEAD</button>
+        <button onclick="openEmoji('food')">🍎 FOOD</button>
+      </div>
+
+      <div class="controls">
+        <div></div><button onclick="setDir('UP')">⬆</button><div></div>
+        <button onclick="setDir('LEFT')">⬅</button>
+        <button onclick="setDir('DOWN')">⬇</button>
+        <button onclick="setDir('RIGHT')">➡</button>
+      </div>
+
+      <div class="hint">🎮 Gamepad + 📱 Swipe supported</div>
+
+    </div>
+  </div>
+</div>
+
+<div id="emojiPopup"></div>
+
+<script src="scriptsnake.js"></script>
+</body>
+</html>
