@@ -7,7 +7,7 @@ const texts = [
   "Lahir di Jakarta, 21 Mei 2010",
   "pelajar yang nyasar di YAPIDH, Bekasi",
   "born to love technology, not biology",
-  "Manchester is Red, 'cuz blue is just for film, GGMU"
+  "Manchester is Red, and always will be, GGMU"
 ];
 
 const intro = document.getElementById("intro");
@@ -99,3 +99,4 @@ document.getElementById("close-spotify").onclick = () =>
 
 document.getElementById("snake-btn").onclick = () =>
   window.open("https://ihsansaid10.github.io/snake.html", "_blank");
+
