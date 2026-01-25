@@ -228,7 +228,7 @@ button {
   bottom: 20px;
   font-size: 20px;
   padding: 10px 14px;
-  z-index: 5;
+  z-index: 10;
   border-radius: 6px;
 }
 
@@ -264,4 +264,5 @@ button {
   font-size: 18px;
   cursor: pointer;
 }
+
 
