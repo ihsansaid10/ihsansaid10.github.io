@@ -100,3 +100,7 @@ document.getElementById("close-spotify").onclick = () =>
 document.getElementById("snake-btn").onclick = () =>
   window.open("https://ihsansaid10.github.io/snake.html", "_blank");
 
+document.getElementById("petsim-btn").onclick = () =>
+  window.open("https://ihsansaid10.github.io/html-petsim/index.html", "_blank");
+
+
