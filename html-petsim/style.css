@@ -1,0 +1,124 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #1e1e1e;
+  font-family: Arial, sans-serif;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  background: linear-gradient(135deg,#ffcc70,#ff8177);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
+  transition: transform .15s, box-shadow .15s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,.3);
+}
+
+#leftUI {
+  position: fixed;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;   /* ⭐ kunci lurus ke bawah */
+  gap: 10px;                /* jarak antar tombol */
+  z-index: 5;
+}
+
+#leftUI button {
+  width: 120px;
+  text-align: left;
+}
+
+
+#rightUI {
+  position: fixed;
+  right: 10px;
+  top: 80px;
+  color: white;
+  background: rgba(0,0,0,.6);
+  padding: 10px;
+  border-radius: 12px;
+  z-index: 5;
+}
+
+#actions {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+#scoreboard {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: linear-gradient(135deg,#4facfe,#00f2fe);
+  padding: 10px;
+  border-radius: 12px;
+  z-index: 6;
+}
+
+.floatingBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 7;
+}
+
+#leaderboard {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,.75);
+  padding: 10px;
+  border-radius: 12px;
+  color: white;
+  z-index: 6;
+}
+
+/* ===== FIX NOTIFICATION ===== */
+body > div {
+  pointer-events: auto;
+}
+
+body > div[style*="z-index: 999"] {
+  z-index: 9999 !important;
+}
+
+/* ===== NOTIFICATION FIX (FINAL) ===== */
+.notification {
+  z-index: 9999;
+  pointer-events: none;
+}
