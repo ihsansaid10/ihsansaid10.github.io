@@ -1,64 +1,68 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>'bout me</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-     <h1>Ihsan Said's Bio</h1>
-     <p>Lahir di Jakarta, 21 Mei 2010</p>
-     <p>pelajar yang nyasar di YAPIDH, Bekasi</p>
-     <p>born to love technology, not biology</p>
-     <p>Manchester is Red, 'cuz blue is just for film, GGMU</p>
-<button onclick="openPopup()">send me a private message</button>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Ihsan Bio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
+<div id="intro">
+  <div class="intro-text">click to see it 👀</div>
+</div>
 
-    <h3>private message</h3>
-    <form id="contact-form">
-      <input type="text" name="name" placeholder="ur name" required><br><br>
-      <input type="email" name="email" placeholder="ur email" required><br><br>
-      <textarea  class="message-box" name="message" placeholder="give me some of your advice, motivation, even your random life stories, give me anything, I'm open, also @mention your Instagram" required></textarea><br><br>
-      <button type="submit">send it!</button>
+<!-- BUTTON GROUP -->
+<div id="btn-group">
+  <button id="pm-btn" class="neon-green">Send me a private message</button>
+  <button id="insta-btn" class="neon-pink">My Insta</button>
+  <button id="github-btn" class="neon-white">My GitHub</button>
+  <button id="spotify-btn" class="neon-spotify">My Spotify Playlist</button>
+  <button id="snake-btn" class="neon-green snake-btn">🐍</button>
+</div>
+
+<!-- POPUP MESSAGE -->
+<div id="popup">
+  <div class="popup-box">
+    <h3>Send Message</h3>
+    <form id="email-form">
+      <input type="text" name="from_name" placeholder="Your name" required>
+      <input type="email" name="reply_to" placeholder="Your email" required>
+      <textarea name="message" placeholder="Message" required></textarea>
+      <div class="popup-actions">
+        <button type="submit">Send</button>
+        <button type="button" id="close-popup">Cancel</button>
+      </div>
     </form>
-
-    <p id="status"></p>
   </div>
 </div>
-</a>
-     <br>
-     <p>here some of my favorite playlist, random taste in music btw</p>
-     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1ZqrfEZAtN06bwh0JfZmHF?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </br>
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-<script>
-(function(){
-  emailjs.init("yt_2tMSGDfmCDqOxi");
-})();
+<!-- POPUP SPOTIFY -->
+<div id="spotify-popup">
+  <div class="spotify-box">
+    <button id="close-spotify">✕</button>
 
-function openPopup() {
-  document.getElementById("popup").style.display = "block";
-}
+    <iframe
+      data-testid="embed-iframe"
+      style="border-radius:12px"
+      src="https://open.spotify.com/embed/playlist/1ZqrfEZAtN06bwh0JfZmHF?utm_source=generator"
+      width="100%"
+      height="352"
+      frameBorder="0"
+      allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
+<div class="container" id="main-content">
+  <div id="typing-text"></div>
+  <img id="manutd-logo" src="manutd.png">
+</div>
 
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-  e.preventDefault();
+<audio id="bg-music" src="airlock.mp3" loop></audio>
 
-  emailjs.sendForm(
-    "service_ryt27zf",
-    "template_7g723co",
-    this
-  ).then(function() {
-    document.getElementById("status").innerText = "Pesan berhasil dikirim!";
-  }, function(error) {
-    document.getElementById("status").innerText = "Gagal mengirim pesan";
-  });
-});</script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>
