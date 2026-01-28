@@ -1,0 +1,256 @@
+@font-face {
+  font-family: MinecraftFont;
+  src: url("minecraft.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: MinecraftFont, monospace;
+}
+
+body {
+  background: black;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* INTRO */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+  transition: opacity 1s;
+}
+
+#intro.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-text {
+  color: white;
+  font-size: 36px;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.4; }
+}
+
+/* GRID */
+body.grid::before {
+  content:"";
+  position: fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: move 12s linear infinite;
+  z-index: 0;
+}
+
+@keyframes move {
+  to { background-position: 400px 400px, 400px 400px; }
+}
+
+/* MAIN */
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.container.show { opacity: 1; }
+
+#typing-text {
+  font-size: 46px;
+  color: #00ff88;
+  text-shadow:
+    0 0 6px #00ff88,
+    0 0 18px #00ff88,
+    0 0 36px #00ff88;
+}
+
+/* MANCHESTER MODE */
+.red-mode {
+  color: red !important;
+  text-shadow: none !important;
+  animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+  0%{transform:translate(0,0)}
+  25%{transform:translate(-2px,2px)}
+  50%{transform:translate(2px,-2px)}
+  75%{transform:translate(-2px,-2px)}
+  100%{transform:translate(2px,2px)}
+}
+
+/* LOGO */
+#manutd-logo {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:220px;
+  opacity:0;
+  transition: opacity 1s;
+  z-index:1;
+}
+
+#manutd-logo.show { opacity:0.3; }
+
+/* BUTTON GROUP */
+#btn-group {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 5;
+}
+
+button {
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: transparent;
+  transition: 0.3s;
+}
+
+/* NEON GREEN */
+.neon-green {
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  box-shadow: 0 0 6px #00ff88, 0 0 16px rgba(0,255,136,0.6);
+}
+
+.neon-green:hover {
+  background: #00ff88;
+  color: black;
+  box-shadow: 0 0 12px #00ff88, 0 0 32px #00ff88;
+}
+
+/* NEON PINK */
+.neon-pink {
+  border: 2px solid #ff4fd8;
+  color: #ff4fd8;
+  box-shadow: 0 0 6px #ff4fd8, 0 0 16px rgba(255,79,216,0.6);
+}
+
+.neon-pink:hover {
+  background: #ff4fd8;
+  color: black;
+  box-shadow: 0 0 12px #ff4fd8, 0 0 32px #ff4fd8;
+}
+
+/* NEON WHITE */
+.neon-white {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 6px #ffffff, 0 0 16px rgba(255,255,255,0.6);
+}
+
+.neon-white:hover {
+  background: #ffffff;
+  color: black;
+  box-shadow: 0 0 12px #ffffff, 0 0 32px #ffffff;
+}
+
+/* NEON SPOTIFY */
+.neon-spotify {
+  border: 2px solid #1db954;
+  color: #1db954;
+  box-shadow: 0 0 6px #1db954, 0 0 16px rgba(29,185,84,0.7);
+}
+
+.neon-spotify:hover {
+  background: #1db954;
+  color: black;
+  box-shadow: 0 0 12px #1db954, 0 0 32px #1db954;
+}
+
+
+/* POPUP MESSAGE */
+#popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+#popup.show { display: flex; }
+
+.popup-box {
+  background: black;
+  border: 2px solid #00ff88;
+  padding: 20px;
+  width: 320px;
+  color: #00ff88;
+}
+
+.popup-box textarea {
+  height: 140px;
+  resize: none;
+}
+
+/* TOMBOL SNAKE */
+.snake-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 20px;
+  padding: 10px 14px;
+  z-index: 5;
+  border-radius: 6px;
+}
+
+/* Hover neon sudah ada karena menggunakan neon-green class */
+
+
+/* SPOTIFY POPUP */
+#spotify-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 60;
+}
+
+#spotify-popup.show {
+  display: flex;
+}
+
+.spotify-box {
+  position: relative;
+  width: 380px;
+}
+
+#close-spotify {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
