@@ -2,35 +2,77 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ihsan Bio</title>
-  <link rel="stylesheet" href="/bio2assets/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="intro">
-  <div class="intro-text">click to see it 👀</div>
+<!-- WALLPAPER -->
+<div class="wallpaper" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
 </div>
 
-<!-- BUTTON GROUP -->
-<div id="btn-group">
-  <button id="pm-btn" class="neon-green">Send me a private message</button>
-  <button id="insta-btn" class="neon-pink">My Insta</button>
-  <button id="github-btn" class="neon-white">My GitHub</button>
-  <button id="spotify-btn" class="neon-spotify">My Spotify Playlist</button>
-  <button id="snake-btn" class="neon-green snake-btn">🐍</button>
+<!-- MENU BAR -->
+<header id="menubar">
+  <div class="menu-left"><span class="menu-logo"></span><strong>Ihsan Bio</strong></div>
+  <div class="menu-right"><span id="menu-clock"></span></div>
+</header>
+
+<!-- LOCK SCREEN / INTRO -->
+<button id="intro" type="button">
+  <div class="lock-time" id="lock-time"></div>
+  <div class="lock-date" id="lock-date"></div>
+  <div class="intro-text" id="login-label">Log In →</div>
+</button>
+
+<!-- MAIN WINDOW -->
+<main class="container" id="main-content">
+  <section class="window">
+    <div class="titlebar">
+      <span class="lights" aria-hidden="true"><i class="red"></i><i class="yellow"></i><i class="green"></i></span>
+      <span class="window-title">Ihsan Bio</span>
+    </div>
+    <div class="window-body">
+      <img id="manutd-logo" src="manutd.png" alt="Manchester United logo">
+      <div id="typing-text" aria-live="polite">
+        <div class="tt"><span class="typed"></span><span class="caret"></span><span class="rest"></span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- SUPPORT (di atas taskbar) -->
+<div id="support-wrap">
+  <a id="support-cta" class="pill" href="https://saweria.co/ihsansaid10" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.8 8.3 2.7 5 6 5c2 0 3.4 1 4.2 2.4h3.6C14.6 6 16 5 18 5c3.3 0 5.2 3.3 3.6 6.8C19.5 16.4 12 21 12 21z"/></svg>
+    <span id="support-label">Support My Work</span>
+  </a>
 </div>
+
+<!-- DOCK (tombol diisi dari config.js) -->
+<nav id="btn-group" aria-label="Links">
+  <span id="dock-apps"></span>
+  <span class="dock-sep" aria-hidden="true"></span>
+  <button id="power-btn" class="dock-item" data-label="Shut Down" aria-label="Shut Down">
+    <span class="icon i-power"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v8"/><path d="M7.200 6.300a8 8 0 1 0 9.600 0"/></g></svg></span>
+  </button>
+</nav>
 
 <!-- POPUP MESSAGE -->
 <div id="popup">
-  <div class="popup-box">
+  <div class="popup-box sheet">
     <h3>Send Message</h3>
     <form id="email-form">
       <input type="text" name="from_name" placeholder="Your name" required>
       <input type="email" name="reply_to" placeholder="Your email" required>
       <textarea name="message" placeholder="Message" required></textarea>
       <div class="popup-actions">
-        <button type="submit">Send</button>
-        <button type="button" id="close-popup">Cancel</button>
+        <button type="button" id="close-popup" class="btn-secondary">Cancel</button>
+        <button type="submit" class="btn-primary">Send</button>
       </div>
     </form>
   </div>
@@ -38,9 +80,11 @@
 
 <!-- POPUP SPOTIFY -->
 <div id="spotify-popup">
-  <div class="spotify-box">
-    <button id="close-spotify">✕</button>
-
+  <div class="spotify-box sheet">
+    <div class="titlebar">
+      <button id="close-spotify" class="light-btn" aria-label="Close"></button>
+      <span class="window-title">My Spotify Playlist</span>
+    </div>
     <iframe
       data-testid="embed-iframe"
       style="border-radius:12px"
@@ -55,17 +99,21 @@
   </div>
 </div>
 
-<div class="container" id="main-content">
-  <div id="typing-text"></div>
-  <img id="manutd-logo" src="/bio2assets/manutd.png">
+<!-- SHUTDOWN SCREEN -->
+<div id="shutdown">
+  <div class="sd-load">
+    <div class="sd-spinner"></div>
+    <div class="sd-text">Shutting down…</div>
+  </div>
+  <button id="power-on" type="button" aria-label="Power On">
+    <svg viewBox="0 0 24 24" width="34" height="34"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v8"/><path d="M7.200 6.300a8 8 0 1 0 9.600 0"/></g></svg>
+  </button>
 </div>
 
-<audio id="bg-music" src="/bio2assets/airlock.mp3" loop></audio>
+<audio id="bg-music" src="airlock.mp3" loop></audio>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="/bio2assets/script.js"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
-
-
