@@ -71,7 +71,14 @@ button { font-family: inherit; color: inherit; border: 0; background: none; curs
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
   transition: background 0.25s ease, transform 0.25s ease;
 }
-#intro:hover .intro-text { background: rgba(255, 255, 255, 0.14); transform: scale(1.04); }
+/* hover cuma kena kalau kursor beneran di atas tombol (bukan di seluruh layar) */
+#intro { cursor: default; }
+#intro:focus-visible { outline: none; }
+#intro:focus-visible .intro-text { outline: 2px solid var(--accent); outline-offset: 3px; }
+.intro-text { cursor: pointer; }
+@media (hover: hover) {
+  .intro-text:hover { background: rgba(255, 255, 255, 0.14); transform: scale(1.04); }
+}
 
 /* WINDOW */
 .container {
