@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="explorer.css">
+  <link rel="stylesheet" href="genie.css">
 </head>
 <body>
 
@@ -44,6 +46,44 @@
     </div>
   </section>
 </main>
+
+<!-- APP EXPLORER (jendela ala Finder, isinya dari CONFIG.apps) -->
+<section id="explorer" role="dialog" aria-label="App Explorer" aria-hidden="true">
+  <div class="xp-titlebar">
+    <span class="xp-lights">
+      <button type="button" id="xp-close" class="red" aria-label="Close"></button>
+      <button type="button" id="xp-min" class="yellow" aria-label="Minimize"></button>
+      <i class="green" aria-hidden="true"></i>
+    </span>
+    <span class="xp-title">App Explorer</span>
+    <span class="xp-tools">
+      <span class="xp-seg" role="group" aria-label="View">
+        <button type="button" data-view="grid" aria-label="Icon view" aria-pressed="true">
+          <svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.500"/></g></svg>
+        </button>
+        <button type="button" data-view="list" aria-label="List view" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></g></svg>
+        </button>
+      </span>
+      <input id="xp-search" type="search" placeholder="Search" aria-label="Search apps" autocomplete="off">
+    </span>
+  </div>
+
+  <div class="xp-body">
+    <aside class="xp-sidebar" aria-label="Folders">
+      <div class="xp-side-head">Favorites</div>
+      <div id="xp-sidebar-list"></div>
+    </aside>
+    <div class="xp-content">
+      <div id="xp-grid" class="xp-grid"></div>
+    </div>
+  </div>
+
+  <footer class="xp-footer">
+    <span class="xp-footer-info"><span id="xp-path">Apps</span><span id="xp-status"></span></span>
+    <button type="button" id="xp-open" class="btn-primary" disabled>Open</button>
+  </footer>
+</section>
 
 <!-- SUPPORT (di atas taskbar) -->
 <div id="support-wrap">
@@ -114,6 +154,17 @@
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script src="config.js"></script>
-<script src="script.js"></script>
+
+<!-- JS dipisah per fungsi (urutan ini penting) -->
+<script src="js/core.js"></script>      <!-- state bersama, musik, label dari config -->
+<script src="js/icons.js"></script>     <!-- daftar icon + pembuat icon -->
+<script src="js/genie.js"></script>     <!-- animasi genie (tersedot ke dock) -->
+<script src="js/clock.js"></script>     <!-- jam menu bar & lock screen -->
+<script src="js/typing.js"></script>    <!-- animasi teks mengetik -->
+<script src="js/login.js"></script>     <!-- login & reset sesi -->
+<script src="js/popups.js"></script>    <!-- popup pesan, email, Spotify -->
+<script src="js/explorer.js"></script>  <!-- App Explorer -->
+<script src="js/dock.js"></script>      <!-- bikin dock dari config -->
+<script src="js/shutdown.js"></script>  <!-- shut down / power on -->
 </body>
 </html>
