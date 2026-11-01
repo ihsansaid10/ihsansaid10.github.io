@@ -1,0 +1,16 @@
+/* GENIE — lapisan animasi (dibuat sementara oleh js/genie.js) */
+.genie-layer { position: fixed; inset: 0; z-index: 70; pointer-events: none; }
+.genie-strip { position: fixed; transform-origin: 0 0; will-change: transform; pointer-events: none; }
+
+/* animasi pop bawaan popup dimatikan, diganti genie */
+#popup.show .sheet, #spotify-popup.show .sheet { animation: none; }
+
+/* latar gelap popup: fade in saat dibuka, fade out saat ditutup */
+#popup.show, #spotify-popup.show { animation: ovIn 0.4s ease; }
+#popup.show.closing, #spotify-popup.show.closing { animation: ovOut 0.55s ease forwards; pointer-events: none; }
+@keyframes ovIn { from { opacity: 0; } }
+@keyframes ovOut { to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #popup.show, #spotify-popup.show, #popup.show.closing, #spotify-popup.show.closing { animation: none; }
+}

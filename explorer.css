@@ -1,0 +1,130 @@
+/* APP EXPLORER — jendela ala Finder (pakai variabel dari style.css) */
+#explorer {
+  position: fixed; left: 50%; top: calc(50% + 10px); z-index: 30;
+  display: none; flex-direction: column;
+  width: min(780px, calc(100% - 24px));
+  height: min(500px, calc(100dvh - 190px)); min-height: 300px;
+  transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px)));
+  background: var(--glass-strong);
+  backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--stroke); border-radius: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+#explorer.show { display: flex; }
+/* tombol merah = close: mengecil sambil memudar. Tombol kuning = minimize (genie) */
+#explorer.closing { animation: xpOut 0.18s ease forwards; pointer-events: none; }
+@keyframes xpOut { to { opacity: 0; scale: 0.94; } }
+
+/* TITLE BAR */
+.xp-titlebar {
+  display: flex; align-items: center; gap: 12px; height: 48px; padding: 0 14px; flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  cursor: grab; touch-action: none; user-select: none;
+}
+.xp-titlebar:active { cursor: grabbing; }
+
+.xp-lights { display: flex; gap: 8px; width: 68px; }
+.xp-lights button, .xp-lights i { width: 12px; height: 12px; border-radius: 50%; display: block; padding: 0; }
+.xp-lights .red { background: #ff5f57; }
+.xp-lights .red:hover { box-shadow: 0 0 0 3px rgba(255, 95, 87, 0.3); }
+.xp-lights .yellow { background: #febc2e; }
+.xp-lights .yellow:hover { box-shadow: 0 0 0 3px rgba(254, 188, 46, 0.3); }
+.xp-lights .green { background: #28c840; }
+
+.xp-title { flex: 1; text-align: center; font-size: 13px; font-weight: 600; color: var(--text-dim); }
+
+.xp-tools { display: flex; align-items: center; gap: 8px; }
+.xp-seg { display: flex; padding: 2px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); }
+.xp-seg button {
+  width: 30px; height: 24px; display: grid; place-items: center; border-radius: 6px; color: var(--text-dim);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.xp-seg button svg { width: 16px; height: 16px; }
+.xp-seg button:hover { color: var(--text); }
+.xp-seg button[aria-pressed="true"] { background: rgba(255, 255, 255, 0.18); color: var(--text); }
+
+#xp-search {
+  width: 150px; height: 28px; padding: 0 10px; font: inherit; font-size: 13px; color: var(--text);
+  background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#xp-search::placeholder { color: var(--text-dim); }
+#xp-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108, 124, 255, 0.35); }
+
+/* BODY */
+.xp-body { flex: 1; display: flex; min-height: 0; }
+
+.xp-sidebar {
+  width: 168px; flex-shrink: 0; padding: 12px 8px; overflow-y: auto;
+  background: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+.xp-side-head { padding: 0 8px 6px; font-size: 11px; font-weight: 600; color: var(--text-dim); }
+.xp-side-item {
+  width: 100%; display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 8px;
+  font-size: 13px; font-weight: 500; text-align: left;
+  transition: background 0.15s ease;
+}
+.xp-side-item:hover { background: rgba(255, 255, 255, 0.06); }
+.xp-side-item.active { background: rgba(255, 255, 255, 0.13); }
+.xp-side-ico { display: grid; place-items: center; width: 18px; height: 18px; color: #6fb6ff; }
+.xp-side-ico svg { width: 18px; height: 18px; }
+
+.xp-content { flex: 1; min-width: 0; overflow-y: auto; }
+
+/* ICON VIEW */
+.xp-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 6px; align-content: start; min-height: 100%; padding: 16px;
+}
+.xp-item {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 12px 8px 10px; border-radius: 12px; text-align: center;
+  transition: background 0.15s ease;
+}
+.xp-item:hover { background: rgba(255, 255, 255, 0.06); }
+.xp-item.selected { background: rgba(108, 124, 255, 0.28); }
+.xp-item .icon { width: 64px; height: 64px; border-radius: 16px; font-size: 32px; }
+.xp-item .icon svg { width: 34px; height: 34px; }
+.xp-name { max-width: 100%; font-size: 12.5px; font-weight: 500; line-height: 1.3; overflow-wrap: anywhere; }
+.xp-meta { display: none; font-size: 12px; color: var(--text-dim); }
+.xp-empty { grid-column: 1 / -1; padding: 40px 0; text-align: center; font-size: 14px; color: var(--text-dim); }
+
+/* LIST VIEW */
+.xp-grid.list { grid-template-columns: 1fr; gap: 2px; padding: 10px; }
+.xp-grid.list .xp-item { flex-direction: row; gap: 12px; padding: 7px 10px; border-radius: 8px; text-align: left; }
+.xp-grid.list .xp-item .icon { width: 32px; height: 32px; border-radius: 9px; font-size: 18px; flex-shrink: 0; }
+.xp-grid.list .xp-item .icon svg { width: 18px; height: 18px; }
+.xp-grid.list .xp-name { font-size: 14px; }
+.xp-grid.list .xp-meta { display: block; margin-left: auto; padding-left: 12px; }
+
+/* FOOTER */
+.xp-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-shrink: 0;
+  padding: 8px 14px; font-size: 12px; color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+.xp-footer-info { display: flex; gap: 14px; min-width: 0; }
+#xp-path { color: var(--text); font-weight: 500; white-space: nowrap; }
+#xp-status { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.xp-footer .btn-primary { padding: 5px 18px; font-size: 13px; }
+.xp-footer .btn-primary:disabled { opacity: 0.4; cursor: default; filter: none; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  #explorer { width: calc(100% - 16px); height: min(520px, calc(100dvh - 150px)); }
+  .xp-sidebar { display: none; }
+  .xp-titlebar { cursor: default; gap: 8px; padding: 0 12px; }
+  .xp-lights { width: auto; }
+  .xp-title { display: none; }
+  .xp-tools { margin-left: auto; }
+  #xp-search { width: 110px; }
+  .xp-grid { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); padding: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #explorer.closing { animation: none; }
+}
